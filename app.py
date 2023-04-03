@@ -13,8 +13,8 @@ import numpy as np
 # In[21]:
 
 
-movement = pd.read_csv('..\pitch_movement.csv')
-outcomes = pd.read_csv('..\pitch-arsenal-stats.csv')
+movement = pd.read_csv('pitch_movement.csv')
+outcomes = pd.read_csv('pitch-arsenal-stats.csv')
 arsenal = movement.merge(outcomes,on=['pitcher_id','pitch_type','year'])
 #arsenal.to_csv('arsenal.csv')
 arsenal.describe()
