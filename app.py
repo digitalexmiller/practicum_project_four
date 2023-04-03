@@ -10,7 +10,7 @@ import plotly.express as px
 import numpy as np
 
 
-# In[21]:
+# In[2]:
 
 
 movement = pd.read_csv('pitch_movement.csv')
@@ -20,7 +20,7 @@ arsenal = movement.merge(outcomes,on=['pitcher_id','pitch_type','year'])
 arsenal.describe()
 
 
-# In[11]:
+# In[8]:
 
 
 #create a header for the streamlit page with an option to filter the data with two select boxes
@@ -43,7 +43,7 @@ pitch_type = st.selectbox(
     pitch_type_array)
 
 
-# In[14]:
+# In[15]:
 
 
 #create sliders for pitch velocity and movement components
@@ -60,18 +60,18 @@ min_vert, max_vert=arsenal['percent_rank_diff_z'].min(),arsenal['percent_rank_di
 
 vert_range = st.slider(
     "Choose Rise/Drop % vs. League Average", 
-    value=(min_vert,max_vert),
-    min_value=min_vert,max_value=max_vert)
+    value=(float(min_vert),float(max_vert)),
+    min_value=float(min_vert),max_value=float(max_vert))
 
 min_break, max_break=arsenal['percent_rank_diff_x'].min(),arsenal['percent_rank_diff_x'].max()
 
 break_range = st.slider(
     "Choose Break % vs. League Average",
-    value=(min_break,max_break),
-    min_value=min_break,max_value=max_break)
+    value=(float(min_break),float(max_break)),
+    min_value=float(min_break),max_value=float(max_break))
 
 
-# In[7]:
+# In[10]:
 
 
 #filter the original data with the constraints applied from the sliders
@@ -89,7 +89,7 @@ filtered_pitchers=arsenal[(
 st.table(filtered_pitchers)
 
 
-# In[24]:
+# In[11]:
 
 
 #offer a scatter plot to chart the relationship between the components of a pitch and the results of the pitch
@@ -123,7 +123,7 @@ title="<b> {} vs {} </b>".format(fig1_y_choice, fig1_x_choice))
 st.plotly_chart(fig1)
 
 
-# In[13]:
+# In[12]:
 
 
 #offer an interactive histogram to let users see how the distribution of outcomes differs by pitch type
@@ -146,4 +146,10 @@ fig2.update_layout(
 title="<b> Distribituion of Pitch Types by {} </b>".format(fig2_choice))
 
 st.plotly_chart(fig2)
+
+
+# In[ ]:
+
+
+
 
