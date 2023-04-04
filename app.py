@@ -35,9 +35,9 @@ arsenal = movement.merge(outcomes,on=['pitcher_id','pitch_type','year'])
 
 
 #check for appropriate data-types, missing values and duplicated rows.
-arsenal.info()
-display(arsenal.describe())
-display(arsenal.duplicated().sum())
+#arsenal.info()
+#display(arsenal.describe())
+#display(arsenal.duplicated().sum())
 
 
 # The info method reveals that the data types are appropriate and there are no missing values in any column. <br>
