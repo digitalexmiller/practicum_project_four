@@ -25,8 +25,8 @@ import numpy as np
 
 
 #read csvs into the data frame and merge input and output csv - optional export command if desired
-movement = pd.read_csv('..\pitch_movement.csv')
-outcomes = pd.read_csv('..\pitch-arsenal-stats.csv')
+movement = pd.read_csv('pitch_movement.csv')
+outcomes = pd.read_csv('pitch-arsenal-stats.csv')
 arsenal = movement.merge(outcomes,on=['pitcher_id','pitch_type','year'])
 #arsenal.to_csv('arsenal.csv')
 
